@@ -40,6 +40,8 @@ This index lists topics and the example implementation files present in this rep
 
 ## 7. Graphs
 - [BFS_DFS.cpp](7.%20Graphs/BFS_DFS.cpp)
+- [Grid_BFS.cpp](7.%20Graphs/Grid_BFS.cpp)
+- [Grid_DFS.cpp](7.%20Graphs/Grid_DFS.cpp)
 - [Cycle_Detection.cpp](7.%20Graphs/Cycle_Detection.cpp)
 - [Dijkstra.cpp](7.%20Graphs/Dijkstra.cpp)
 - [MST_Kruskal.cpp](7.%20Graphs/MST_Kruskal.cpp)
@@ -68,11 +70,3 @@ This index lists topics and the example implementation files present in this rep
 - [Basic_Operations.cpp](11.%20Bit_Manipulation/Basic_Operations.cpp)
 - [Single_Number.cpp](11.%20Bit_Manipulation/Single_Number.cpp)
 - [Tricks.cpp](11.%20Bit_Manipulation/Tricks.cpp)
-
----
-
-If you prefer an alternate layout (clickable file names plus 1–line descriptions, or synopsis anchors), tell me which format to generate and I’ll update this file.
-
----
-
-If you prefer a clickable table of contents (links that open files in an editor), I can convert these into markdown links or anchor links — tell me which you'd like.
