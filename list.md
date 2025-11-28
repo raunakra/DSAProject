@@ -36,6 +36,7 @@
   - Vertical order
   - Maximum width
   - Morris (threaded) inorder
+  - Boundary traversal
   - Left / Right view
 - **Recursion on trees**
 - **Tree properties**
