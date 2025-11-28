@@ -33,6 +33,7 @@
   - Preorder
   - Postorder
   - Level-order
+  - Vertical order
   - Morris (threaded) inorder
   - Left / Right view
 - **Recursion on trees**
