@@ -43,6 +43,7 @@
   - Height
   - Diameter
   - LCA (Lowest Common Ancestor)
+  - Children sum property
 - **Tree construction from traversals**
 
 # 5. Binary Search Trees

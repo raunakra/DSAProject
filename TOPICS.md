@@ -34,6 +34,7 @@ This index lists topics and the example implementation files present in this rep
 - [Diameter.cpp](4.%20Trees/Diameter.cpp)
 - [LCA.cpp](4.%20Trees/LCA.cpp)
 - [Boundary_Traversal.cpp](4.%20Trees/Boundary_Traversal.cpp)
+- [Children_Sum_Property.cpp](4.%20Trees/Children_Sum_Property.cpp)
 
 ## 5. Binary Search Trees
 - [BST_to_Sorted_Array.cpp](5.%20Binary_Search_Trees/BST_to_Sorted_Array.cpp)
