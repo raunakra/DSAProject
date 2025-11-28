@@ -34,6 +34,7 @@
   - Postorder
   - Level-order
   - Vertical order
+  - Maximum width
   - Morris (threaded) inorder
   - Left / Right view
 - **Recursion on trees**

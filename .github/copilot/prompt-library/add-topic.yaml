@@ -1,0 +1,14 @@
+name: AddTopic
+description: Wrap the given topic inside curly braces and append update instruction.
+version: 1.0.0
+author: Your Name
+tags:
+  - automation
+  - topic-management
+arguments:
+  - name: topic
+    description: Topic name to add
+    required: true
+
+prompt: |
+  Add { {{topic}} } and update the topics.
