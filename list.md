@@ -68,6 +68,7 @@
 - **Cycle detection**
 - **Topological sort**
 - **Strongly connected components (Kosaraju)**
+- **Word ladder (shortest transformation BFS)**
 - **Dijkstra's algorithm**
 - **Union-Find**
 - **Basic MST (Kruskal's)**

@@ -59,6 +59,7 @@ This index lists topics and the example implementation files present in this rep
 - [Kosaraju_SCC.cpp](7.%20Graphs/Kosaraju_SCC.cpp) — Strongly connected components (Kosaraju) — Time: O(V + E), Space: O(V + E)
 - [Rotten_Oranges.cpp](7.%20Graphs/Rotten_Oranges.cpp) — Grid / multi-source BFS example (rotting oranges), Time: O(R * C), Space: O(R * C)
 - [Union_Find.cpp](7.%20Graphs/Union_Find.cpp)
+ - [Word_Ladder.cpp](7.%20Graphs/Word_Ladder.cpp) — Shortest transformation (pattern BFS), Time: O(N * L), Space: O(N * L)
 
 ## 8. Dynamic Programming
 - [1D_DP.cpp](8.%20Dynamic_Programming/1D_DP.cpp)

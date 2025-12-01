@@ -48,6 +48,7 @@ Examples: see sorting patterns across the repo — use `Standard_BS.cpp` or othe
 ### Graph algorithms
 - BFS / DFS: O(V+E) time, O(V) extra space (queue/stack + visited). Example: `7. Graphs/BFS_DFS.cpp`.
 	- Rotting oranges (grid / multi-source BFS): O(R * C) time, O(R * C) space. Example: `7. Graphs/Rotten_Oranges.cpp`.
+	- Word ladder (pattern BFS): O(N * L) time to build patterns + O(N * L) overall BFS, Space: O(N * L). Example: `7. Graphs/Word_Ladder.cpp`.
 - Dijkstra (binary heap): O((V+E) log V) typical, O(V) space. See `7. Graphs/Dijkstra.cpp`.
 - Topological sort: O(V+E) time, O(V) space. See `7. Graphs/Topological_Sort.cpp`.
 - Kruskal (using union-find): O(E log E) with union-find for connectivity; see `7. Graphs/MST_Kruskal.cpp`.
