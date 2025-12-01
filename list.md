@@ -64,8 +64,10 @@
 
 - **BFS and DFS (must know cold)**
 - **Grid BFS / DFS (matrix-grid traversal problems)**
+  - Rotten oranges (multi-source BFS)
 - **Cycle detection**
 - **Topological sort**
+- **Strongly connected components (Kosaraju)**
 - **Dijkstra's algorithm**
 - **Union-Find**
 - **Basic MST (Kruskal's)**

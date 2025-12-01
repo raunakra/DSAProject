@@ -56,6 +56,8 @@ This index lists topics and the example implementation files present in this rep
 - [Dijkstra.cpp](7.%20Graphs/Dijkstra.cpp)
 - [MST_Kruskal.cpp](7.%20Graphs/MST_Kruskal.cpp)
 - [Topological_Sort.cpp](7.%20Graphs/Topological_Sort.cpp)
+- [Kosaraju_SCC.cpp](7.%20Graphs/Kosaraju_SCC.cpp) — Strongly connected components (Kosaraju) — Time: O(V + E), Space: O(V + E)
+- [Rotten_Oranges.cpp](7.%20Graphs/Rotten_Oranges.cpp) — Grid / multi-source BFS example (rotting oranges), Time: O(R * C), Space: O(R * C)
 - [Union_Find.cpp](7.%20Graphs/Union_Find.cpp)
 
 ## 8. Dynamic Programming
