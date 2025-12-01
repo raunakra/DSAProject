@@ -5,6 +5,8 @@
 using namespace std;
 
 // Unique Paths (Grid)
+// Problem: Given an m x n grid, find the number of unique paths from top-left to bottom-right.
+// You can only move either down or right at any point in time.
 int uniquePaths(int m, int n) {
     vector<vector<int>> dp(m, vector<int>(n, 1));
     
@@ -17,6 +19,9 @@ int uniquePaths(int m, int n) {
 }
 
 // Minimum Path Sum
+// Problem: Given an m x n grid filled with non-negative numbers, find a path from top-left
+// to bottom-right which minimizes the sum of all numbers along its path.
+// You can only move either down or right at any point in time.
 int minPathSum(vector<vector<int>>& grid) {
     int m = grid.size();
     int n = grid[0].size();

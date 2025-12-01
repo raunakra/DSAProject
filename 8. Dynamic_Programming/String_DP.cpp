@@ -6,6 +6,12 @@
 using namespace std;
 
 // Edit Distance
+// Problem: Given two strings word1 and word2, return the minimum number of operations
+// required to convert word1 to word2. You have three operations allowed:
+// 1. Insert a character
+// 2. Delete a character
+// 3. Replace a character
+// Time Complexity: O(m*n), Space Complexity: O(m*n)
 int minDistance(string word1, string word2) {
     int m = word1.length();
     int n = word2.length();

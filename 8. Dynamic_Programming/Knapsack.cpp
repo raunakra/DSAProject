@@ -4,7 +4,15 @@
 
 using namespace std;
 
-// 0/1 Knapsack
+// 0/1 Knapsack Problem
+// Problem: Given weights and values of n items, put these items in a knapsack 
+// of capacity W to get the maximum total value in the knapsack.
+// Each item can be included at most once (0/1 choice).
+//
+// Example: weights = [10, 20, 30], values = [60, 100, 120], capacity = 50
+// Output: 220 (items with weight 20 and 30)
+//
+// Time Complexity: O(n*W), Space Complexity: O(n*W)
 int knapsack(int W, const vector<int>& wt, const vector<int>& val, int n) {
     vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
     

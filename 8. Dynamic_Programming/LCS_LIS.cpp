@@ -6,6 +6,10 @@
 using namespace std;
 
 // Longest Common Subsequence
+// Problem: Given two strings text1 and text2, return the length of their longest common subsequence.
+// A subsequence is a sequence that can be derived from another sequence by deleting some or no elements
+// without changing the order of the remaining elements.
+// Example: text1 = "abcde", text2 = "ace" → Output: 3 (The LCS is "ace")
 int longestCommonSubsequence(string text1, string text2) {
     int m = text1.length();
     int n = text2.length();
@@ -24,6 +28,10 @@ int longestCommonSubsequence(string text1, string text2) {
 }
 
 // Longest Increasing Subsequence
+// Problem: Given an integer array nums, return the length of the longest strictly increasing subsequence.
+// A subsequence is a sequence that can be derived from an array by deleting some or no elements
+// without changing the order of the remaining elements.
+// Example: nums = [10,9,2,5,3,7,101,18] → Output: 4 (The LIS is [2,3,7,101])
 int lengthOfLIS(vector<int>& nums) {
     if (nums.empty()) return 0;
     vector<int> dp(nums.size(), 1);
