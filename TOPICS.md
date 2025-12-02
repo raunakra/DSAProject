@@ -7,18 +7,21 @@ This index lists topics and the example implementation files present in this rep
 - [Sliding_Window.cpp](1.%20Arrays_Strings/Sliding_Window.cpp)
 - [String_Manipulation.cpp](1.%20Arrays_Strings/String_Manipulation.cpp)
 - [Two_Pointers.cpp](1.%20Arrays_Strings/Two_Pointers.cpp)
+- [Amazon_Salesforce_Questions.cpp](1.%20Arrays_Strings/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Two Sum, Three Sum, Trapping Rain Water, Merge Intervals, etc.)
 
 ## 2. Linked Lists
 - [Cycle_Detection.cpp](2.%20Linked_Lists/Cycle_Detection.cpp)
 - [Dummy_Node.cpp](2.%20Linked_Lists/Dummy_Node.cpp)
 - [Fast_Slow_Pointers.cpp](2.%20Linked_Lists/Fast_Slow_Pointers.cpp)
 - [Reversal.cpp](2.%20Linked_Lists/Reversal.cpp)
+- [Amazon_Salesforce_Questions.cpp](2.%20Linked_Lists/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Reverse List, Merge Lists, Add Numbers, Copy Random Pointer, LRU Cache)
 
 ## 3. Stacks & Queues
 - [Deque_Sliding_Window.cpp](3.%20Stacks_Queues/Deque_Sliding_Window.cpp)
 - [Expression_Evaluation.cpp](3.%20Stacks_Queues/Expression_Evaluation.cpp)
 - [Monotonic_Stack.cpp](3.%20Stacks_Queues/Monotonic_Stack.cpp)
 - [Queue_BFS.cpp](3.%20Stacks_Queues/Queue_BFS.cpp)
+- [Amazon_Salesforce_Questions.cpp](3.%20Stacks_Queues/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Valid Parentheses, Min Stack, Simplify Path, Daily Temperatures, Queue using Stacks)
 
 ## 4. Trees
 - [Construction.cpp](4.%20Trees/Construction.cpp)
@@ -36,18 +39,21 @@ This index lists topics and the example implementation files present in this rep
 - [Boundary_Traversal.cpp](4.%20Trees/Boundary_Traversal.cpp)
 - [Children_Sum_Property.cpp](4.%20Trees/Children_Sum_Property.cpp)
 - [Time_To_Burn_Tree.cpp](4.%20Trees/Time_To_Burn_Tree.cpp) — Amount of time for binary tree to be infected (BFS with parent pointers), Time: O(N), Space: O(N)
+- [Amazon_Salesforce_Questions.cpp](4.%20Trees/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Level Order, Validate BST, Serialize/Deserialize, LCA, Max Path Sum, Flatten)
 
 ## 5. Binary Search Trees
 - [BST_to_Sorted_Array.cpp](5.%20Binary_Search_Trees/BST_to_Sorted_Array.cpp)
 - [Operations.cpp](5.%20Binary_Search_Trees/Operations.cpp)
 - [Successor_Predecessor.cpp](5.%20Binary_Search_Trees/Successor_Predecessor.cpp)
 - [Validation.cpp](5.%20Binary_Search_Trees/Validation.cpp)
+- [Amazon_Salesforce_Questions.cpp](5.%20Binary_Search_Trees/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Validate BST, Kth Smallest, BST Iterator, Convert Array to BST, Delete/Insert, Range Sum)
 
 ## 6. Heaps & Priority Queue
 - [Meeting_Rooms.cpp](6.%20Heaps_Priority_Queue/Meeting_Rooms.cpp)
 - [Merge_K_Sorted.cpp](6.%20Heaps_Priority_Queue/Merge_K_Sorted.cpp)
 - [Running_Median.cpp](6.%20Heaps_Priority_Queue/Running_Median.cpp)
 - [Top_K.cpp](6.%20Heaps_Priority_Queue/Top_K.cpp)
+- [Amazon_Salesforce_Questions.cpp](6.%20Heaps_Priority_Queue/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Top K Frequent, Median Finder, Merge K Lists, Task Scheduler, K Closest Points)
 
 ## 7. Graphs
 - [BFS_DFS.cpp](7.%20Graphs/BFS_DFS.cpp)
@@ -61,6 +67,7 @@ This index lists topics and the example implementation files present in this rep
 - [Rotten_Oranges.cpp](7.%20Graphs/Rotten_Oranges.cpp) — Grid / multi-source BFS example (rotting oranges), Time: O(R * C), Space: O(R * C)
 - [Union_Find.cpp](7.%20Graphs/Union_Find.cpp)
  - [Word_Ladder.cpp](7.%20Graphs/Word_Ladder.cpp) — Shortest transformation (pattern BFS), Time: O(N * L), Space: O(N * L)
+- [Amazon_Salesforce_Questions.cpp](7.%20Graphs/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Number of Islands, Clone Graph, Course Schedule, Word Search, Pacific Atlantic)
 
 ## 8. Dynamic Programming
 - [1D_DP.cpp](8.%20Dynamic_Programming/1D_DP.cpp)
@@ -69,19 +76,23 @@ This index lists topics and the example implementation files present in this rep
 - [LCS_LIS.cpp](8.%20Dynamic_Programming/LCS_LIS.cpp)
 - [String_DP.cpp](8.%20Dynamic_Programming/String_DP.cpp)
 - [DP_On_Trees.cpp](8.%20Dynamic_Programming/DP_On_Trees.cpp) — Dynamic programming on trees (max path sum, house robber III, diameter), Time: O(N), Space: O(H)
+- [Amazon_Salesforce_Questions.cpp](8.%20Dynamic_Programming/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Climbing Stairs, House Robber, Coin Change, LIS, Word Break, Max Subarray, Edit Distance)
 
 ## 9. Binary Search
 - [BS_on_Answer.cpp](9.%20Binary_Search/BS_on_Answer.cpp)
 - [Peak_Element.cpp](9.%20Binary_Search/Peak_Element.cpp)
 - [Rotated_Array.cpp](9.%20Binary_Search/Rotated_Array.cpp)
 - [Standard_BS.cpp](9.%20Binary_Search/Standard_BS.cpp)
+- [Amazon_Salesforce_Questions.cpp](9.%20Binary_Search/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Binary Search, Search Rotated Array, Find Peak, Search 2D Matrix, Koko Bananas, Split Array)
 
 ## 10. Backtracking
 - [N_Queens.cpp](10.%20Backtracking/N_Queens.cpp)
 - [Palindrome_Partitioning.cpp](10.%20Backtracking/Palindrome_Partitioning.cpp)
 - [Subsets_Permutations.cpp](10.%20Backtracking/Subsets_Permutations.cpp)
+- [Amazon_Salesforce_Questions.cpp](10.%20Backtracking/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Letter Combinations, Generate Parentheses, Combination Sum, Word Search, N-Queens, Permutations)
 
 ## 11. Bit Manipulation
 - [Basic_Operations.cpp](11.%20Bit_Manipulation/Basic_Operations.cpp)
 - [Single_Number.cpp](11.%20Bit_Manipulation/Single_Number.cpp)
 - [Tricks.cpp](11.%20Bit_Manipulation/Tricks.cpp)
+- [Amazon_Salesforce_Questions.cpp](11.%20Bit_Manipulation/Amazon_Salesforce_Questions.cpp) — Amazon & Salesforce frequently asked questions (Single Number, Hamming Weight, Counting Bits, Reverse Bits, Power of Two, Missing Number, Maximum XOR)

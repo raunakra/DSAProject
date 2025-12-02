@@ -1,3 +1,7 @@
+# DSAProject — Topics Index
+
+> **Note:** Each topic folder now includes an `Amazon_Salesforce_Questions.cpp` file containing frequently asked interview questions from Amazon and Salesforce. See [TOPICS.md](TOPICS.md) for the complete file listing.
+
 # 1. Arrays & Strings
 
 - **Two pointers**
