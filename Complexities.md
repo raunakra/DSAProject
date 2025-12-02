@@ -45,6 +45,9 @@ Examples: see sorting patterns across the repo — use `Standard_BS.cpp` or othe
 ### Heaps & Priority problems
 - Build heap: O(n) (bottom-up), push/pop: O(log n). Useful for Top-K problems — see `6. Heaps_Priority_Queue/Top_K.cpp` and `Merge_K_Sorted.cpp`.
 
+### Tree algorithms
+- Tree infection/burn time (BFS with parent pointers): O(N) time, O(N) space. Example: `4. Trees/Time_To_Burn_Tree.cpp`.
+
 ### Graph algorithms
 - BFS / DFS: O(V+E) time, O(V) extra space (queue/stack + visited). Example: `7. Graphs/BFS_DFS.cpp`.
 	- Rotting oranges (grid / multi-source BFS): O(R * C) time, O(R * C) space. Example: `7. Graphs/Rotten_Oranges.cpp`.

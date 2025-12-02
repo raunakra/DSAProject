@@ -4,6 +4,25 @@
 
 using namespace std;
 
+// Palindrome Partitioning
+// Problem: Given a string s, partition s such that every substring of the partition is a palindrome.
+// Return all possible palindrome partitioning of s.
+// 
+// Example 1:
+//   Input: s = "aab"
+//   Output: [["a","a","b"], ["aa","b"]]
+//
+// Example 2:
+//   Input: s = "a"
+//   Output: [["a"]]
+//
+// Approach: Use backtracking to explore all possible partitions. At each position, try all substrings
+// that form palindromes and recursively partition the remaining string.
+//
+// Time Complexity: O(N * 2^N) where N is the length of string. In worst case, we have 2^N partitions
+// and for each partition we spend O(N) to check palindromes and build the result.
+// Space Complexity: O(N) for recursion stack depth, excluding output space.
+
 bool isPalindrome(const string& s, int start, int end) {
     while (start < end) {
         if (s[start++] != s[end--]) return false;

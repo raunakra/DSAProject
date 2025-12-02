@@ -44,6 +44,7 @@
   - Diameter
   - LCA (Lowest Common Ancestor)
   - Children sum property
+  - Time to burn tree (infection spread)
 - **Tree construction from traversals**
 
 # 5. Binary Search Trees

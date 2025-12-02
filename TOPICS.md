@@ -35,6 +35,7 @@ This index lists topics and the example implementation files present in this rep
 - [LCA.cpp](4.%20Trees/LCA.cpp)
 - [Boundary_Traversal.cpp](4.%20Trees/Boundary_Traversal.cpp)
 - [Children_Sum_Property.cpp](4.%20Trees/Children_Sum_Property.cpp)
+- [Time_To_Burn_Tree.cpp](4.%20Trees/Time_To_Burn_Tree.cpp) — Amount of time for binary tree to be infected (BFS with parent pointers), Time: O(N), Space: O(N)
 
 ## 5. Binary Search Trees
 - [BST_to_Sorted_Array.cpp](5.%20Binary_Search_Trees/BST_to_Sorted_Array.cpp)
