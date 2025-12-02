@@ -59,6 +59,7 @@ Examples: see sorting patterns across the repo — use `Standard_BS.cpp` or othe
 ### Dynamic Programming (DP)
 - Typical DP table (1D): O(n) time per subproblem; 2D-table: O(n*m) time and O(n*m) space.
 - Many DP problems can be optimized to O(1) or O(n) space by reusing rows/columns — examine `8. Dynamic_Programming/1D_DP.cpp` and `2D_DP.cpp`.
+- DP on trees (max path sum, diameter, house robber): O(N) time, O(H) space for recursion. Example: `8. Dynamic_Programming/DP_On_Trees.cpp`.
 
 ### Backtracking / Exhaustive search
 - Subsets / Permutations: O(n * n!) (permutation generation) time and O(n) - O(n!) depending on output. See `10. Backtracking/N_Queens.cpp` and `Subsets_Permutations.cpp`.

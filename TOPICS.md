@@ -68,6 +68,7 @@ This index lists topics and the example implementation files present in this rep
 - [Knapsack.cpp](8.%20Dynamic_Programming/Knapsack.cpp)
 - [LCS_LIS.cpp](8.%20Dynamic_Programming/LCS_LIS.cpp)
 - [String_DP.cpp](8.%20Dynamic_Programming/String_DP.cpp)
+- [DP_On_Trees.cpp](8.%20Dynamic_Programming/DP_On_Trees.cpp) — Dynamic programming on trees (max path sum, house robber III, diameter), Time: O(N), Space: O(H)
 
 ## 9. Binary Search
 - [BS_on_Answer.cpp](9.%20Binary_Search/BS_on_Answer.cpp)

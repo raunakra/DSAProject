@@ -85,6 +85,11 @@
 - **LCS (Longest Common Subsequence) and LIS (Longest Increasing Subsequence)**
 - **String DP**
   - Edit distance
+- **DP on trees**
+  - Max path sum
+  - House robber III
+  - Tree diameter
+  - Subtree properties
 
 # 9. Binary Search
 
