@@ -288,6 +288,164 @@ string decodeString(string s) {
     return currentStr;
 }
 
+/** 
+Salesforce - Frequent
+
+Design a stack-like data structure to push elements to the stack and pop the most frequent element from the stack.
+
+Implement the FreqStack class:
+FreqStack() constructs an empty frequency stack.
+void push(int val) pushes an integer val onto the top of the stack.
+int pop() removes and returns the most frequent element in the stack.
+If there is a tie for the most frequent element, the element closest to the stack's top is removed and returned.
+
+*/
+
+class FreqStack {
+public:
+   int maxFreq = 0;
+   map<int,stack<int>> mp;
+   map<int,int> freq;
+
+    FreqStack() {
+        
+    }
+    
+    void push(int val) {
+        maxFreq = max(maxFreq, ++freq[val]);
+        mp[freq[val]].push(val);
+    }
+    
+    int pop() {
+        int x = mp[maxFreq].top(); mp[maxFreq].pop();
+        if(!mp[freq[x]--].size()) maxFreq--;
+        return x;
+    }
+};
+
+
+/**
+ * Salesforce - Frequent
+ Given a string s, find the length of the longest substring without duplicate characters.
+ Example 1:
+
+ Input: s = "abcabcbb"
+ Output: 3
+ Explanation: The answer is "abc", with the length of 3. Note that "bca" and "cab" are also correct answers.
+ */
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        map<char,int> mp;
+        int mx = 0;
+        deque<char> dq;
+
+        for(int i = 0;i<s.size();i++)
+        {
+            char c = s[i];
+            if(mp[c] == 0) 
+            { 
+                dq.push_back(c);
+                mp[c]=1;
+            }
+            else
+            {
+                while(!dq.empty() && mp[c] == 1)
+                {
+                    mp[dq.front()]=0;
+                    dq.pop_front();
+                }
+                
+                dq.push_back(c);
+                mp[c]=1;
+            }
+
+            mx = mx > dq.size() ? mx : dq.size();
+        }
+        return mx;
+    }
+};
+
+
+/**
+ * Salesforce - Frequent
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+Implement the MinStack class:
+MinStack() initializes the stack object.
+void push(int val) pushes the element val onto the stack.
+void pop() removes the element on the top of the stack.
+int top() gets the top element of the stack.
+int getMin() retrieves the minimum element in the stack.
+
+You must implement a solution with O(1) time complexity for each function.
+ */
+
+class MinStack {
+    stack<int> cur;
+    stack<int> min;
+public:
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        cur.push(val);
+        if(min.empty() || min.top() >= val) min.push(val);
+    }
+    
+    void pop() {
+        if(cur.top() == min.top()) min.pop();
+        cur.pop();
+    }
+    
+    int top() {
+        return cur.top();
+    }
+    
+    int getMin() {
+        return min.top();
+    }
+};
+
+
+/**
+ * Salesforce - Frequent
+
+ You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+ Return the max sliding window.
+
+ Example 1:
+
+    Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+    Output: [3,3,5,5,6,7]
+ */
+
+class Solution {
+public:
+   vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+       deque<int> queue;
+       vector<int> ans;
+       for (int left = 0; left < nums.size(); ++left) {
+           // As the window move on, element nums[left-k] will be outdated.
+           if (queue.front() == left - k) queue.pop_front();
+           // Now we are ready to push our new element nums[left]'s index into the queue.
+           // But before that, we should clear elements which is smaller then nums[left].
+           // Why? Because if nums[left] is bigger then nums[i], 
+           // there will be no way for nums[i] be selected as the max number in range (left-k, left]
+           while (!queue.empty() && nums[queue.back()] < nums[left]) queue.pop_back();
+           // Now push the index into our queue.
+           queue.push_back(left);
+           // Okay, now nums[queue.front()] mush be the max number in range (left-k, left] 
+           if (left - k + 1 >= 0) ans.push_back(nums[queue.front()]);
+       }
+       return ans;
+   }
+};
+
+
 int main() {
     // Valid Parentheses
     cout << "Valid '()[]{}': " << (isValid("()[]{}") ? "true" : "false") << "\n";
