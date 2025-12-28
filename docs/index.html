@@ -114,24 +114,79 @@
             background: var(--bg-tertiary);
         }
         
+        .theme-selector {
+            position: relative;
+        }
+        
         .theme-btn {
-            background: none;
+            background: var(--bg-tertiary);
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.8rem;
             cursor: pointer;
-            padding: 0.4rem 0.6rem;
+            padding: 0.4rem 0.75rem;
             border-radius: 6px;
             transition: all 0.15s;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.4rem;
         }
         
         .theme-btn:hover {
             color: var(--text-primary);
-            background: var(--bg-tertiary);
             border-color: var(--text-muted);
+        }
+        
+        .theme-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            min-width: 160px;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        
+        .theme-dropdown.open {
+            display: block;
+        }
+        
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: none;
+            border: none;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-align: left;
+        }
+        
+        .theme-option:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .theme-option.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent);
+        }
+        
+        .theme-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
         
         /* Main Content */
@@ -475,7 +530,32 @@
                 <span>DSA Interview Prep</span>
             </div>
             <div class="header-spacer"></div>
-            <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+            <div class="theme-selector">
+                <button class="theme-btn" id="themeBtn">🎨 <span id="themeName">One Dark</span> ▾</button>
+                <div class="theme-dropdown" id="themeDropdown">
+                    <button class="theme-option active" data-theme="one-dark">
+                        <span class="theme-dot" style="background: #282c34"></span> One Dark
+                    </button>
+                    <button class="theme-option" data-theme="monokai">
+                        <span class="theme-dot" style="background: #272822"></span> Monokai
+                    </button>
+                    <button class="theme-option" data-theme="dracula">
+                        <span class="theme-dot" style="background: #282a36"></span> Dracula
+                    </button>
+                    <button class="theme-option" data-theme="nord">
+                        <span class="theme-dot" style="background: #2e3440"></span> Nord
+                    </button>
+                    <button class="theme-option" data-theme="solarized-dark">
+                        <span class="theme-dot" style="background: #002b36"></span> Solarized Dark
+                    </button>
+                    <button class="theme-option" data-theme="github-light">
+                        <span class="theme-dot" style="background: #ffffff; border: 1px solid #ddd"></span> GitHub Light
+                    </button>
+                    <button class="theme-option" data-theme="vs-light">
+                        <span class="theme-dot" style="background: #f3f3f3; border: 1px solid #ddd"></span> VS Light
+                    </button>
+                </div>
+            </div>
             <a href="https://github.com/raunakra/DSAProject" target="_blank" class="github-link">
                 <span>GitHub</span> ↗
             </a>
@@ -533,109 +613,119 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
     
-    <!-- Enhanced C++ syntax highlighting -->
+    <!-- Enhanced C++ syntax highlighting - Multiple Themes -->
     <style>
-        /* Dark theme (default) - One Dark colors */
-        .token.keyword {
-            color: #c678dd !important;
-        }
+        /* ============ ONE DARK (Default) ============ */
+        [data-editor-theme="one-dark"] .code-wrapper pre { background: #282c34 !important; }
+        [data-editor-theme="one-dark"] .token.keyword { color: #c678dd !important; }
+        [data-editor-theme="one-dark"] .token.class-name,
+        [data-editor-theme="one-dark"] .token.builtin { color: #e5c07b !important; }
+        [data-editor-theme="one-dark"] .token.function { color: #61afef !important; }
+        [data-editor-theme="one-dark"] .token.string { color: #98c379 !important; }
+        [data-editor-theme="one-dark"] .token.number { color: #d19a66 !important; }
+        [data-editor-theme="one-dark"] .token.comment { color: #5c6370 !important; font-style: italic; }
+        [data-editor-theme="one-dark"] .token.operator { color: #56b6c2 !important; }
+        [data-editor-theme="one-dark"] .token.punctuation { color: #abb2bf !important; }
+        [data-editor-theme="one-dark"] .token.directive,
+        [data-editor-theme="one-dark"] .token.macro { color: #c678dd !important; }
+        [data-editor-theme="one-dark"] .line-numbers-rows > span:before { color: #495162 !important; }
+        [data-editor-theme="one-dark"] .line-numbers .line-numbers-rows { border-right-color: #3b4048 !important; }
         
-        .token.class-name,
-        .token.builtin {
-            color: #e5c07b !important;
-        }
+        /* ============ MONOKAI ============ */
+        [data-editor-theme="monokai"] .code-wrapper pre { background: #272822 !important; }
+        [data-editor-theme="monokai"] .token.keyword { color: #f92672 !important; }
+        [data-editor-theme="monokai"] .token.class-name,
+        [data-editor-theme="monokai"] .token.builtin { color: #66d9ef !important; font-style: italic; }
+        [data-editor-theme="monokai"] .token.function { color: #a6e22e !important; }
+        [data-editor-theme="monokai"] .token.string { color: #e6db74 !important; }
+        [data-editor-theme="monokai"] .token.number { color: #ae81ff !important; }
+        [data-editor-theme="monokai"] .token.comment { color: #75715e !important; font-style: italic; }
+        [data-editor-theme="monokai"] .token.operator { color: #f92672 !important; }
+        [data-editor-theme="monokai"] .token.punctuation { color: #f8f8f2 !important; }
+        [data-editor-theme="monokai"] .token.directive,
+        [data-editor-theme="monokai"] .token.macro { color: #f92672 !important; }
+        [data-editor-theme="monokai"] .line-numbers-rows > span:before { color: #90908a !important; }
+        [data-editor-theme="monokai"] .line-numbers .line-numbers-rows { border-right-color: #3e3d32 !important; }
         
-        .token.function {
-            color: #61afef !important;
-        }
+        /* ============ DRACULA ============ */
+        [data-editor-theme="dracula"] .code-wrapper pre { background: #282a36 !important; }
+        [data-editor-theme="dracula"] .token.keyword { color: #ff79c6 !important; }
+        [data-editor-theme="dracula"] .token.class-name,
+        [data-editor-theme="dracula"] .token.builtin { color: #8be9fd !important; font-style: italic; }
+        [data-editor-theme="dracula"] .token.function { color: #50fa7b !important; }
+        [data-editor-theme="dracula"] .token.string { color: #f1fa8c !important; }
+        [data-editor-theme="dracula"] .token.number { color: #bd93f9 !important; }
+        [data-editor-theme="dracula"] .token.comment { color: #6272a4 !important; font-style: italic; }
+        [data-editor-theme="dracula"] .token.operator { color: #ff79c6 !important; }
+        [data-editor-theme="dracula"] .token.punctuation { color: #f8f8f2 !important; }
+        [data-editor-theme="dracula"] .token.directive,
+        [data-editor-theme="dracula"] .token.macro { color: #ff79c6 !important; }
+        [data-editor-theme="dracula"] .line-numbers-rows > span:before { color: #6272a4 !important; }
+        [data-editor-theme="dracula"] .line-numbers .line-numbers-rows { border-right-color: #44475a !important; }
         
-        .token.string {
-            color: #98c379 !important;
-        }
+        /* ============ NORD ============ */
+        [data-editor-theme="nord"] .code-wrapper pre { background: #2e3440 !important; }
+        [data-editor-theme="nord"] .token.keyword { color: #81a1c1 !important; }
+        [data-editor-theme="nord"] .token.class-name,
+        [data-editor-theme="nord"] .token.builtin { color: #8fbcbb !important; }
+        [data-editor-theme="nord"] .token.function { color: #88c0d0 !important; }
+        [data-editor-theme="nord"] .token.string { color: #a3be8c !important; }
+        [data-editor-theme="nord"] .token.number { color: #b48ead !important; }
+        [data-editor-theme="nord"] .token.comment { color: #616e88 !important; font-style: italic; }
+        [data-editor-theme="nord"] .token.operator { color: #81a1c1 !important; }
+        [data-editor-theme="nord"] .token.punctuation { color: #eceff4 !important; }
+        [data-editor-theme="nord"] .token.directive,
+        [data-editor-theme="nord"] .token.macro { color: #5e81ac !important; }
+        [data-editor-theme="nord"] .line-numbers-rows > span:before { color: #4c566a !important; }
+        [data-editor-theme="nord"] .line-numbers .line-numbers-rows { border-right-color: #3b4252 !important; }
         
-        .token.number {
-            color: #d19a66 !important;
-        }
+        /* ============ SOLARIZED DARK ============ */
+        [data-editor-theme="solarized-dark"] .code-wrapper pre { background: #002b36 !important; }
+        [data-editor-theme="solarized-dark"] .token.keyword { color: #859900 !important; }
+        [data-editor-theme="solarized-dark"] .token.class-name,
+        [data-editor-theme="solarized-dark"] .token.builtin { color: #b58900 !important; }
+        [data-editor-theme="solarized-dark"] .token.function { color: #268bd2 !important; }
+        [data-editor-theme="solarized-dark"] .token.string { color: #2aa198 !important; }
+        [data-editor-theme="solarized-dark"] .token.number { color: #d33682 !important; }
+        [data-editor-theme="solarized-dark"] .token.comment { color: #586e75 !important; font-style: italic; }
+        [data-editor-theme="solarized-dark"] .token.operator { color: #859900 !important; }
+        [data-editor-theme="solarized-dark"] .token.punctuation { color: #93a1a1 !important; }
+        [data-editor-theme="solarized-dark"] .token.directive,
+        [data-editor-theme="solarized-dark"] .token.macro { color: #cb4b16 !important; }
+        [data-editor-theme="solarized-dark"] .line-numbers-rows > span:before { color: #586e75 !important; }
+        [data-editor-theme="solarized-dark"] .line-numbers .line-numbers-rows { border-right-color: #073642 !important; }
         
-        .token.comment {
-            color: #5c6370 !important;
-            font-style: italic;
-        }
+        /* ============ GITHUB LIGHT ============ */
+        [data-editor-theme="github-light"] .code-wrapper pre { background: #ffffff !important; }
+        [data-editor-theme="github-light"] .token.keyword { color: #d73a49 !important; }
+        [data-editor-theme="github-light"] .token.class-name,
+        [data-editor-theme="github-light"] .token.builtin { color: #6f42c1 !important; }
+        [data-editor-theme="github-light"] .token.function { color: #6f42c1 !important; }
+        [data-editor-theme="github-light"] .token.string { color: #032f62 !important; }
+        [data-editor-theme="github-light"] .token.number { color: #005cc5 !important; }
+        [data-editor-theme="github-light"] .token.comment { color: #6a737d !important; font-style: italic; }
+        [data-editor-theme="github-light"] .token.operator { color: #d73a49 !important; }
+        [data-editor-theme="github-light"] .token.punctuation { color: #24292e !important; }
+        [data-editor-theme="github-light"] .token.directive,
+        [data-editor-theme="github-light"] .token.macro { color: #22863a !important; }
+        [data-editor-theme="github-light"] .line-numbers-rows > span:before { color: #6e7781 !important; }
+        [data-editor-theme="github-light"] .line-numbers .line-numbers-rows { border-right-color: #d0d7de !important; }
         
-        .token.operator {
-            color: #56b6c2 !important;
-        }
-        
-        .token.punctuation {
-            color: #abb2bf !important;
-        }
-        
-        .token.directive,
-        .token.directive-hash,
-        .token.macro {
-            color: #c678dd !important;
-        }
-        
-        .token.string.include {
-            color: #98c379 !important;
-        }
-        
-        /* Light theme - GitHub-inspired colors */
-        [data-theme="light"] .token.keyword {
-            color: #d73a49 !important;
-        }
-        
-        [data-theme="light"] .token.class-name,
-        [data-theme="light"] .token.builtin {
-            color: #6f42c1 !important;
-        }
-        
-        [data-theme="light"] .token.function {
-            color: #6f42c1 !important;
-        }
-        
-        [data-theme="light"] .token.string {
-            color: #032f62 !important;
-        }
-        
-        [data-theme="light"] .token.number {
-            color: #005cc5 !important;
-        }
-        
-        [data-theme="light"] .token.comment {
-            color: #6a737d !important;
-            font-style: italic;
-        }
-        
-        [data-theme="light"] .token.operator {
-            color: #d73a49 !important;
-        }
-        
-        [data-theme="light"] .token.punctuation {
-            color: #24292e !important;
-        }
-        
-        [data-theme="light"] .token.directive,
-        [data-theme="light"] .token.directive-hash,
-        [data-theme="light"] .token.macro {
-            color: #22863a !important;
-        }
-        
-        [data-theme="light"] .token.string.include {
-            color: #032f62 !important;
-        }
-        
-        [data-theme="light"] .code-wrapper pre {
-            background: #f6f8fa !important;
-        }
-        
-        [data-theme="light"] .line-numbers-rows > span:before {
-            color: #6e7781 !important;
-        }
-        
-        [data-theme="light"] .line-numbers .line-numbers-rows {
-            border-right-color: #d0d7de !important;
-        }
+        /* ============ VS LIGHT ============ */
+        [data-editor-theme="vs-light"] .code-wrapper pre { background: #f3f3f3 !important; }
+        [data-editor-theme="vs-light"] .token.keyword { color: #0000ff !important; }
+        [data-editor-theme="vs-light"] .token.class-name,
+        [data-editor-theme="vs-light"] .token.builtin { color: #267f99 !important; }
+        [data-editor-theme="vs-light"] .token.function { color: #795e26 !important; }
+        [data-editor-theme="vs-light"] .token.string { color: #a31515 !important; }
+        [data-editor-theme="vs-light"] .token.number { color: #098658 !important; }
+        [data-editor-theme="vs-light"] .token.comment { color: #008000 !important; font-style: italic; }
+        [data-editor-theme="vs-light"] .token.operator { color: #000000 !important; }
+        [data-editor-theme="vs-light"] .token.punctuation { color: #000000 !important; }
+        [data-editor-theme="vs-light"] .token.directive,
+        [data-editor-theme="vs-light"] .token.macro { color: #0000ff !important; }
+        [data-editor-theme="vs-light"] .line-numbers-rows > span:before { color: #237893 !important; }
+        [data-editor-theme="vs-light"] .line-numbers .line-numbers-rows { border-right-color: #c8c8c8 !important; }
     </style>
     
     <script>
@@ -778,24 +868,56 @@
             overlay.classList.remove('visible');
         };
         
-        // Theme toggle
+        // Editor Theme Selector
         const themeBtn = document.getElementById('themeBtn');
+        const themeDropdown = document.getElementById('themeDropdown');
+        const themeName = document.getElementById('themeName');
+        const themeOptions = document.querySelectorAll('.theme-option');
         const html = document.documentElement;
         
-        function setTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            themeBtn.textContent = theme === 'light' ? '☀️' : '🌙';
-            localStorage.setItem('theme', theme);
+        const themeNames = {
+            'one-dark': 'One Dark',
+            'monokai': 'Monokai',
+            'dracula': 'Dracula',
+            'nord': 'Nord',
+            'solarized-dark': 'Solarized Dark',
+            'github-light': 'GitHub Light',
+            'vs-light': 'VS Light'
+        };
+        
+        function setEditorTheme(theme) {
+            html.setAttribute('data-editor-theme', theme);
+            themeName.textContent = themeNames[theme] || theme;
+            localStorage.setItem('editorTheme', theme);
+            
+            // Update active state
+            themeOptions.forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.theme === theme);
+            });
+            
+            // Close dropdown
+            themeDropdown.classList.remove('open');
         }
         
-        // Load saved theme or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setTheme(savedTheme);
-        
-        themeBtn.onclick = () => {
-            const current = html.getAttribute('data-theme') || 'dark';
-            setTheme(current === 'dark' ? 'light' : 'dark');
+        // Toggle dropdown
+        themeBtn.onclick = (e) => {
+            e.stopPropagation();
+            themeDropdown.classList.toggle('open');
         };
+        
+        // Theme option click
+        themeOptions.forEach(opt => {
+            opt.onclick = () => setEditorTheme(opt.dataset.theme);
+        });
+        
+        // Close dropdown on outside click
+        document.addEventListener('click', () => {
+            themeDropdown.classList.remove('open');
+        });
+        
+        // Load saved theme or default
+        const savedTheme = localStorage.getItem('editorTheme') || 'one-dark';
+        setEditorTheme(savedTheme);
         
         // Init
         buildNav();
