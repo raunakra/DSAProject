@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSAProject — Data Structures & Algorithms Repository</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0d47a1;
+            --accent-color: #00bcd4;
+            --text-dark: #202124;
+            --text-light: #5f6368;
+            --bg-light: #f8f9fa;
+            --border-color: #dadce0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+        
+        .header-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .header-links a {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .header-links a:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .hero h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+        
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .topic-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            border-left-color: var(--accent-color);
+        }
+        
+        .topic-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .topic-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .cta-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .cta-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--bg-light);
+            border-color: var(--secondary-color);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .breadcrumb {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 DSAProject</h1>
+        <p>Data Structures & Algorithms — Interview Preparation Repository</p>
+        <div class="header-links">
+            <a href="#topics">Browse Topics</a>
+            <a href="TOPICS.md">Full Index</a>
+            <a href="https://github.com/raunakra/DSAProject" target="_blank">GitHub</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Master Data Structures & Algorithms for FAANG Interviews</h2>
+            <p>
+                A comprehensive collection of <strong>110+ interview questions</strong> from <strong>Amazon & Salesforce</strong>,
+                implemented in <strong>C++17</strong> with complete complexity analysis and test cases.
+            </p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">11</div>
+                <div class="label">Topic Folders</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">110+</div>
+                <div class="label">Interview Problems</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">60+</div>
+                <div class="label">Algorithm Patterns</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">Code Tested</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>✨ Key Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">✅</div>
+                    <h3>Fully Compilable</h3>
+                    <p>Standalone C++17 examples with no external dependencies</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Complexity Analysis</h3>
+                    <p>Time and space complexity for every solution</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Company-Focused</h3>
+                    <p>Curated problems from Amazon & Salesforce interviews</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h3>Well-Documented</h3>
+                    <p>Problem statements, examples, and test cases included</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="topics" style="margin-top: 3rem;">
+            <h2 style="color: var(--secondary-color); margin-bottom: 1.5rem; font-size: 1.8rem;">📚 Topic Categories</h2>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <h3>1. Arrays & Strings</h3>
+                    <p>Two pointers • Sliding window • Prefix sum • String manipulation • <strong>7 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>2. Linked Lists</h3>
+                    <p>Reversal • Cycle detection • Fast/slow pointers • Dummy nodes • <strong>5 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>3. Stacks & Queues</h3>
+                    <p>Monotonic stacks • Expression evaluation • Deques • <strong>5 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>4. Trees</h3>
+                    <p>Traversals • LCA • Binary trees • Tree properties • <strong>6 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>5. Binary Search Trees</h3>
+                    <p>BST validation • Insert/delete • Successor/predecessor • <strong>13 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>6. Heaps & Priority Queues</h3>
+                    <p>Top K problems • Merge K lists • Median finder • <strong>12 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>7. Graphs</h3>
+                    <p>BFS/DFS • Cycle detection • Dijkstra • Kosaraju SCC • <strong>5 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>8. Dynamic Programming</h3>
+                    <p>1D/2D DP • Tree DP • Knapsack • String DP • <strong>15 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>9. Binary Search</h3>
+                    <p>Standard search • Rotated arrays • Answer space • <strong>13 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>10. Backtracking</h3>
+                    <p>Subsets • Permutations • N-Queens • Sudoku • <strong>11 problems</strong></p>
+                </div>
+                <div class="topic-card">
+                    <h3>11. Bit Manipulation</h3>
+                    <p>Single number • Hamming weight • XOR tricks • <strong>17 problems</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>🚀 Get Started Now</h2>
+            <p style="margin-bottom: 1.5rem;">Choose your learning path:</p>
+            <div class="cta-buttons">
+                <a href="list.md" class="btn btn-primary">📋 View Concept Index</a>
+                <a href="TOPICS.md" class="btn btn-primary">📁 Browse All Files</a>
+                <a href="REFERENCE/Complexities.md" class="btn btn-secondary">📊 Complexity Cheat Sheet</a>
+            </div>
+        </div>
+
+        <div class="breadcrumb">
+            <strong>Quick Links:</strong>
+            <a href="#">Home</a> •
+            <a href="list.md">Topics</a> •
+            <a href="TOPICS.md">Files</a> •
+            <a href="REFERENCE/Complexities.md">Complexities</a> •
+            <a href="https://github.com/raunakra/DSAProject" target="_blank">GitHub</a>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>DSAProject</strong> — Master Data Structures & Algorithms for Interviews</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">
+            <a href="https://github.com/raunakra/DSAProject" style="color: inherit; text-decoration: none;">⭐ Star on GitHub</a> •
+            <span>110+ Interview Problems</span> •
+            <span>C++17</span> •
+            <span>MIT License</span>
+        </p>
+        <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">Last Updated: December 28, 2025</p>
+    </footer>
+</body>
+</html>

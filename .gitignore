@@ -1,0 +1,46 @@
+# Build artifacts
+*.o
+*.out
+*.exe
+*.app
+*.a
+*.so
+
+# Compiled executables
+*.bin
+*.elf
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build directories
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Node modules (if using any)
+node_modules/
+
+# Bundler
+.bundle/
+vendor/
+
+# Ruby/Gem
+Gemfile.lock
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Test outputs
+test_output/
+*.log
+
+# Temporary files
+*.tmp
+tmp/

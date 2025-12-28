@@ -1,0 +1,58 @@
+# GitHub Pages Configuration for DSAProject
+
+# Site settings
+title: DSAProject — Data Structures & Algorithms
+description: Comprehensive C++ implementations for interview preparation 
+baseurl: "/DSAProject"
+url: "https://raunakra.github.io"
+
+# Repository
+repository: raunakra/DSAProject
+
+# Theme
+theme: jekyll-theme-minimal
+
+# Build settings
+markdown: kramdown
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Exclude files
+exclude:
+  - .github/
+  - .git/
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .DS_Store
+  - .vscode/
+
+# Include files (ensure markdown is rendered)
+include:
+  - TOPICS.md
+  - list.md
+  - REFERENCE/
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO settings
+author: "raunakra"
+social:
+  name: raunakra
+  links:
+    - https://github.com/raunakra/DSAProject
+
+# Header navigation (optional)
+header_pages:
+  - TOPICS.md
+  - list.md
+  - REFERENCE/Complexities.md
