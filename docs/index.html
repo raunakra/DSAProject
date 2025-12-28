@@ -33,6 +33,17 @@
             --header-height: 56px;
         }
         
+        /* Light theme */
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f4f5;
+            --bg-tertiary: #e4e4e7;
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --text-muted: #a1a1aa;
+            --border: #e4e4e7;
+        }
+        
         html, body {
             height: 100%;
             font-family: 'Inter', system-ui, sans-serif;
@@ -101,6 +112,26 @@
         .github-link:hover {
             color: var(--text-primary);
             background: var(--bg-tertiary);
+        }
+        
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+            border-color: var(--text-muted);
         }
         
         /* Main Content */
@@ -444,6 +475,7 @@
                 <span>DSA Interview Prep</span>
             </div>
             <div class="header-spacer"></div>
+            <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
             <a href="https://github.com/raunakra/DSAProject" target="_blank" class="github-link">
                 <span>GitHub</span> ↗
             </a>
@@ -503,58 +535,106 @@
     
     <!-- Enhanced C++ syntax highlighting -->
     <style>
-        /* Keywords */
+        /* Dark theme (default) - One Dark colors */
         .token.keyword {
             color: #c678dd !important;
         }
         
-        /* Types - int, char, bool, void, etc */
         .token.class-name,
         .token.builtin {
             color: #e5c07b !important;
         }
         
-        /* Functions */
         .token.function {
             color: #61afef !important;
         }
         
-        /* Strings */
         .token.string {
             color: #98c379 !important;
         }
         
-        /* Numbers */
         .token.number {
             color: #d19a66 !important;
         }
         
-        /* Comments */
         .token.comment {
             color: #5c6370 !important;
             font-style: italic;
         }
         
-        /* Operators */
         .token.operator {
             color: #56b6c2 !important;
         }
         
-        /* Punctuation */
         .token.punctuation {
             color: #abb2bf !important;
         }
         
-        /* Preprocessor directives */
         .token.directive,
         .token.directive-hash,
         .token.macro {
             color: #c678dd !important;
         }
         
-        /* Include paths */
         .token.string.include {
             color: #98c379 !important;
+        }
+        
+        /* Light theme - GitHub-inspired colors */
+        [data-theme="light"] .token.keyword {
+            color: #d73a49 !important;
+        }
+        
+        [data-theme="light"] .token.class-name,
+        [data-theme="light"] .token.builtin {
+            color: #6f42c1 !important;
+        }
+        
+        [data-theme="light"] .token.function {
+            color: #6f42c1 !important;
+        }
+        
+        [data-theme="light"] .token.string {
+            color: #032f62 !important;
+        }
+        
+        [data-theme="light"] .token.number {
+            color: #005cc5 !important;
+        }
+        
+        [data-theme="light"] .token.comment {
+            color: #6a737d !important;
+            font-style: italic;
+        }
+        
+        [data-theme="light"] .token.operator {
+            color: #d73a49 !important;
+        }
+        
+        [data-theme="light"] .token.punctuation {
+            color: #24292e !important;
+        }
+        
+        [data-theme="light"] .token.directive,
+        [data-theme="light"] .token.directive-hash,
+        [data-theme="light"] .token.macro {
+            color: #22863a !important;
+        }
+        
+        [data-theme="light"] .token.string.include {
+            color: #032f62 !important;
+        }
+        
+        [data-theme="light"] .code-wrapper pre {
+            background: #f6f8fa !important;
+        }
+        
+        [data-theme="light"] .line-numbers-rows > span:before {
+            color: #6e7781 !important;
+        }
+        
+        [data-theme="light"] .line-numbers .line-numbers-rows {
+            border-right-color: #d0d7de !important;
         }
     </style>
     
@@ -696,6 +776,25 @@
         overlay.onclick = () => {
             sidebar.classList.remove('open');
             overlay.classList.remove('visible');
+        };
+        
+        // Theme toggle
+        const themeBtn = document.getElementById('themeBtn');
+        const html = document.documentElement;
+        
+        function setTheme(theme) {
+            html.setAttribute('data-theme', theme);
+            themeBtn.textContent = theme === 'light' ? '☀️' : '🌙';
+            localStorage.setItem('theme', theme);
+        }
+        
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        
+        themeBtn.onclick = () => {
+            const current = html.getAttribute('data-theme') || 'dark';
+            setTheme(current === 'dark' ? 'light' : 'dark');
         };
         
         // Init
