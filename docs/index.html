@@ -497,8 +497,66 @@
     
     <!-- Prism.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <!-- Enhanced C++ syntax highlighting -->
+    <style>
+        /* Keywords */
+        .token.keyword {
+            color: #c678dd !important;
+        }
+        
+        /* Types - int, char, bool, void, etc */
+        .token.class-name,
+        .token.builtin {
+            color: #e5c07b !important;
+        }
+        
+        /* Functions */
+        .token.function {
+            color: #61afef !important;
+        }
+        
+        /* Strings */
+        .token.string {
+            color: #98c379 !important;
+        }
+        
+        /* Numbers */
+        .token.number {
+            color: #d19a66 !important;
+        }
+        
+        /* Comments */
+        .token.comment {
+            color: #5c6370 !important;
+            font-style: italic;
+        }
+        
+        /* Operators */
+        .token.operator {
+            color: #56b6c2 !important;
+        }
+        
+        /* Punctuation */
+        .token.punctuation {
+            color: #abb2bf !important;
+        }
+        
+        /* Preprocessor directives */
+        .token.directive,
+        .token.directive-hash,
+        .token.macro {
+            color: #c678dd !important;
+        }
+        
+        /* Include paths */
+        .token.string.include {
+            color: #98c379 !important;
+        }
+    </style>
     
     <script>
         const topics = [
