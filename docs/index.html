@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSA Interview Prep — Code Revision Hub</title>
+    <title>DSA Interview Prep</title>
     
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -20,178 +20,115 @@
         }
         
         :root {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-tertiary: #21262d;
-            --bg-card: #1c2128;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --text-muted: #6e7681;
-            --accent-blue: #58a6ff;
-            --accent-green: #3fb950;
-            --accent-purple: #a371f7;
-            --accent-orange: #f0883e;
-            --accent-cyan: #39c5cf;
-            --border-color: #30363d;
-            --hover-bg: #30363d;
-            --sidebar-width: 320px;
-            --header-height: 60px;
-            --transition: all 0.2s ease;
+            --bg-primary: #09090b;
+            --bg-secondary: #18181b;
+            --bg-tertiary: #27272a;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #27272a;
+            --sidebar-width: 280px;
+            --header-height: 56px;
         }
         
         html, body {
             height: 100%;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            overflow: hidden;
+        }
+        
+        /* Layout */
+        .app {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
         
         /* Header */
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
             height: var(--header-height);
             background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             padding: 0 1.5rem;
-            z-index: 1000;
-            gap: 1.5rem;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
         }
         
         .logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            flex-shrink: 0;
+            gap: 0.5rem;
         }
         
         .logo-icon {
-            font-size: 1.5rem;
+            color: var(--accent);
         }
         
-        .search-container {
+        .header-spacer {
             flex: 1;
-            max-width: 600px;
-            position: relative;
         }
         
-        .search-input {
-            width: 100%;
-            padding: 0.6rem 1rem 0.6rem 2.5rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
-        }
-        
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 0.85rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .header-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-shrink: 0;
-        }
-        
-        .header-btn {
-            padding: 0.5rem 1rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
+        .github-link {
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
             text-decoration: none;
+            font-size: 0.875rem;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: all 0.15s;
         }
         
-        .header-btn:hover {
-            background: var(--hover-bg);
+        .github-link:hover {
             color: var(--text-primary);
-            border-color: var(--text-muted);
+            background: var(--bg-tertiary);
         }
         
-        /* Main Layout */
-        .main-container {
+        /* Main Content */
+        .main {
             display: flex;
-            height: 100vh;
-            padding-top: var(--header-height);
+            flex: 1;
+            overflow: hidden;
         }
         
         /* Sidebar */
         .sidebar {
             width: var(--sidebar-width);
             background: var(--bg-secondary);
-            border-right: 1px solid var(--border-color);
+            border-right: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
             overflow: hidden;
         }
         
-        .sidebar-header {
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .sidebar-title {
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
-        }
-        
-        .topic-count {
-            background: var(--bg-tertiary);
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 10px;
-        }
-        
         .sidebar-content {
             flex: 1;
             overflow-y: auto;
-            padding: 0.5rem 0;
+            padding: 0.5rem;
         }
         
         .sidebar-content::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         
         .sidebar-content::-webkit-scrollbar-track {
@@ -199,95 +136,90 @@
         }
         
         .sidebar-content::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
+            background: var(--border);
+            border-radius: 3px;
         }
         
-        .sidebar-content::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-        
-        /* Topic Groups */
-        .topic-group {
+        /* Topic */
+        .topic {
             margin-bottom: 0.25rem;
         }
         
-        .topic-header {
+        .topic-btn {
+            width: 100%;
             display: flex;
             align-items: center;
-            padding: 0.6rem 1rem;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: none;
+            border: none;
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: var(--transition);
-            gap: 0.6rem;
-            user-select: none;
+            transition: all 0.15s;
+            text-align: left;
         }
         
-        .topic-header:hover {
-            background: var(--hover-bg);
-        }
-        
-        .topic-header.active {
+        .topic-btn:hover {
             background: var(--bg-tertiary);
         }
         
         .topic-icon {
-            font-size: 1.1rem;
-            width: 24px;
+            font-size: 1rem;
+            width: 20px;
             text-align: center;
         }
         
         .topic-name {
             flex: 1;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-primary);
         }
         
         .topic-chevron {
             color: var(--text-muted);
-            font-size: 0.7rem;
-            transition: transform 0.2s ease;
+            font-size: 0.625rem;
+            transition: transform 0.2s;
         }
         
-        .topic-header.expanded .topic-chevron {
+        .topic.open .topic-chevron {
             transform: rotate(90deg);
         }
         
         .topic-files {
             display: none;
-            padding-left: 2.5rem;
+            padding: 0.25rem 0 0.25rem 1.75rem;
         }
         
-        .topic-files.visible {
+        .topic.open .topic-files {
             display: block;
         }
         
-        .file-item {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 1rem 0.5rem 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-            gap: 0.5rem;
-            font-size: 0.85rem;
+        .file-btn {
+            width: 100%;
+            display: block;
+            padding: 0.375rem 0.75rem;
+            background: none;
+            border: none;
+            border-radius: 4px;
             color: var(--text-secondary);
-            border-left: 2px solid transparent;
+            font-size: 0.8125rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
-        .file-item:hover {
-            background: var(--hover-bg);
+        .file-btn:hover {
             color: var(--text-primary);
+            background: var(--bg-tertiary);
         }
         
-        .file-item.active {
-            background: rgba(88, 166, 255, 0.1);
-            color: var(--accent-blue);
-            border-left-color: var(--accent-blue);
-        }
-        
-        .file-icon {
-            font-size: 0.8rem;
-            opacity: 0.7;
+        .file-btn.active {
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
         }
         
         /* Content Area */
@@ -296,563 +228,271 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            background: var(--bg-primary);
         }
         
-        /* Welcome Screen */
-        .welcome-screen {
+        /* Empty State */
+        .empty-state {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        .welcome-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-        
-        .welcome-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .welcome-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-        
-        .quick-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-top: 0.25rem;
         }
         
-        .welcome-hint {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
         
-        .welcome-hint kbd {
-            background: var(--bg-primary);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            border: 1px solid var(--border-color);
+        .empty-text {
+            font-size: 0.9375rem;
         }
         
-        /* Code Viewer */
-        .code-viewer {
+        /* Code View */
+        .code-view {
             flex: 1;
             display: none;
             flex-direction: column;
             overflow: hidden;
         }
         
-        .code-viewer.visible {
+        .code-view.visible {
             display: flex;
         }
         
-        .code-header {
+        .code-toolbar {
             display: flex;
             align-items: center;
-            padding: 0.75rem 1.25rem;
+            padding: 0.75rem 1rem;
             background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-color);
-            gap: 1rem;
+            border-bottom: 1px solid var(--border);
+            gap: 0.75rem;
         }
         
-        .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .breadcrumb-item {
+        .file-path {
+            font-size: 0.8125rem;
             color: var(--text-secondary);
         }
         
-        .breadcrumb-separator {
-            color: var(--text-muted);
-        }
-        
-        .breadcrumb-current {
+        .file-path span {
             color: var(--text-primary);
             font-weight: 500;
         }
         
-        .code-actions {
-            margin-left: auto;
-            display: flex;
-            gap: 0.5rem;
+        .toolbar-spacer {
+            flex: 1;
         }
         
-        .code-btn {
-            padding: 0.4rem 0.75rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
+        .toolbar-btn {
             display: flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.25rem;
+            padding: 0.375rem 0.625rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-decoration: none;
         }
         
-        .code-btn:hover {
-            background: var(--hover-bg);
+        .toolbar-btn:hover {
             color: var(--text-primary);
+            border-color: var(--text-muted);
         }
         
-        .code-btn.copied {
-            background: rgba(63, 185, 80, 0.2);
-            border-color: var(--accent-green);
-            color: var(--accent-green);
+        .toolbar-btn.copied {
+            color: #22c55e;
+            border-color: #22c55e;
         }
         
-        .code-container {
+        .code-wrapper {
             flex: 1;
             overflow: auto;
             padding: 1rem;
         }
         
-        .code-container::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+        .code-wrapper::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
         
-        .code-container::-webkit-scrollbar-track {
+        .code-wrapper::-webkit-scrollbar-track {
             background: var(--bg-secondary);
         }
         
-        .code-container::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 5px;
+        .code-wrapper::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
         }
         
-        .code-container::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-        
-        .code-container pre {
+        .code-wrapper pre {
             margin: 0;
             border-radius: 8px;
             background: var(--bg-secondary) !important;
         }
         
-        .code-container code {
-            font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
-            font-size: 0.9rem !important;
+        .code-wrapper code {
+            font-family: 'JetBrains Mono', monospace !important;
+            font-size: 0.875rem !important;
             line-height: 1.6 !important;
         }
         
-        /* Loading State */
-        .loading-container {
+        /* Loading */
+        .loading {
             flex: 1;
             display: none;
             align-items: center;
             justify-content: center;
         }
         
-        .loading-container.visible {
+        .loading.visible {
             display: flex;
         }
         
-        .loader {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border-color);
-            border-top-color: var(--accent-blue);
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        /* Error State */
-        .error-container {
-            flex: 1;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+        /* Footer */
+        .footer {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
             text-align: center;
+            flex-shrink: 0;
         }
         
-        .error-container.visible {
-            display: flex;
-        }
-        
-        .error-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .error-message {
+        .footer a {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            text-decoration: none;
         }
         
-        .retry-btn {
-            padding: 0.6rem 1.25rem;
-            background: var(--accent-blue);
-            border: none;
-            border-radius: 6px;
-            color: white;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .retry-btn:hover {
-            opacity: 0.9;
-        }
-        
-        /* Mobile Responsive */
-        .menu-toggle {
-            display: none;
-            padding: 0.5rem;
-            background: transparent;
-            border: none;
+        .footer a:hover {
             color: var(--text-primary);
-            font-size: 1.25rem;
-            cursor: pointer;
         }
         
-        @media (max-width: 900px) {
+        /* Mobile */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 40;
+        }
+        
+        .overlay.visible {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
             .sidebar {
                 position: fixed;
                 top: var(--header-height);
                 left: 0;
                 bottom: 0;
+                z-index: 50;
                 transform: translateX(-100%);
-                transition: transform 0.3s ease;
-                z-index: 500;
+                transition: transform 0.2s ease;
             }
             
             .sidebar.open {
                 transform: translateX(0);
             }
             
-            .menu-toggle {
-                display: block;
-            }
-            
-            .sidebar-overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.5);
-                z-index: 400;
+            .github-link span {
                 display: none;
             }
-            
-            .sidebar-overlay.visible {
-                display: block;
-            }
-            
-            .header-btn span {
-                display: none;
-            }
-            
-            .quick-stats {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
         }
         
-        /* Search Results */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-top: 0.5rem;
-            max-height: 400px;
-            overflow-y: auto;
-            display: none;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            z-index: 100;
-        }
-        
-        .search-results.visible {
-            display: block;
-        }
-        
-        .search-result-item {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            gap: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-        
-        .search-result-item:hover {
-            background: var(--hover-bg);
-        }
-        
-        .search-result-topic {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: var(--bg-tertiary);
-            padding: 0.15rem 0.5rem;
-            border-radius: 4px;
-        }
-        
-        .search-result-file {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-        }
-        
-        /* Prism.js customization */
+        /* Prism overrides */
         .line-numbers .line-numbers-rows {
-            border-right: 1px solid var(--border-color) !important;
+            border-right: 1px solid var(--border) !important;
         }
         
         .line-numbers-rows > span:before {
             color: var(--text-muted) !important;
         }
-        
-        /* File tags */
-        .file-tag {
-            font-size: 0.65rem;
-            padding: 0.1rem 0.4rem;
-            border-radius: 3px;
-            margin-left: auto;
-        }
-        
-        .file-tag.amazon {
-            background: rgba(255, 153, 0, 0.2);
-            color: #ff9900;
-        }
-        
-        /* Code info bar */
-        .code-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 1.25rem;
-            background: var(--bg-tertiary);
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-        
-        .code-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-        
-        .code-info-icon {
-            opacity: 0.7;
-        }
-        
-        /* Navigation buttons */
-        .nav-buttons {
-            display: flex;
-            gap: 0.5rem;
-            margin-left: 1rem;
-        }
-        
-        .nav-btn {
-            padding: 0.35rem 0.65rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .nav-btn:hover:not(:disabled) {
-            background: var(--hover-bg);
-            color: var(--text-primary);
-        }
-        
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <a href="#" class="logo" onclick="showWelcome(); return false;">
-            <span class="logo-icon">🚀</span>
-            <span>DSA Interview Prep</span>
-        </a>
-        
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search files... (Ctrl+K)">
-            <div class="search-results" id="searchResults"></div>
-        </div>
-        
-        <div class="header-actions">
-            <a href="https://github.com/raunakra/DSAProject" target="_blank" class="header-btn">
-                <span>⭐</span>
-                <span>GitHub</span>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <button class="menu-btn" id="menuBtn">☰</button>
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span>DSA Interview Prep</span>
+            </div>
+            <div class="header-spacer"></div>
+            <a href="https://github.com/raunakra/DSAProject" target="_blank" class="github-link">
+                <span>GitHub</span> ↗
             </a>
-        </div>
-    </header>
-    
-    <!-- Sidebar Overlay (Mobile) -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <span class="sidebar-title">Topics</span>
-                <span class="topic-count" id="topicCount">11 Topics</span>
-            </div>
-            <nav class="sidebar-content" id="sidebarContent">
-                <!-- Topics will be dynamically generated -->
-            </nav>
-        </aside>
+        </header>
         
-        <!-- Content Area -->
-        <main class="content">
-            <!-- Welcome Screen -->
-            <div class="welcome-screen" id="welcomeScreen">
-                <div class="welcome-icon">📚</div>
-                <h1 class="welcome-title">DSA Interview Prep</h1>
-                <p class="welcome-subtitle">
-                    A comprehensive collection of Data Structures & Algorithms solutions 
-                    for quick interview revision. Select a topic from the sidebar to get started.
-                </p>
-                
-                <div class="quick-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">11</div>
-                        <div class="stat-label">Topics</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">110+</div>
-                        <div class="stat-label">Problems</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">C++17</div>
-                        <div class="stat-label">Standard</div>
-                    </div>
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+        
+        <!-- Main -->
+        <div class="main">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <nav class="sidebar-content" id="nav"></nav>
+            </aside>
+            
+            <!-- Content -->
+            <main class="content">
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">📂</div>
+                    <p class="empty-text">Select a file from the sidebar</p>
                 </div>
                 
-                <div class="welcome-hint">
-                    💡 Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search files
+                <!-- Loading -->
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
                 </div>
-            </div>
-            
-            <!-- Loading State -->
-            <div class="loading-container" id="loadingContainer">
-                <div class="loader"></div>
-            </div>
-            
-            <!-- Error State -->
-            <div class="error-container" id="errorContainer">
-                <div class="error-icon">😕</div>
-                <p class="error-message">Failed to load the file. Please try again.</p>
-                <button class="retry-btn" id="retryBtn">Retry</button>
-            </div>
-            
-            <!-- Code Viewer -->
-            <div class="code-viewer" id="codeViewer">
-                <div class="code-header">
-                    <div class="breadcrumb">
-                        <span class="breadcrumb-item" id="breadcrumbTopic">Topic</span>
-                        <span class="breadcrumb-separator">/</span>
-                        <span class="breadcrumb-current" id="breadcrumbFile">file.cpp</span>
+                
+                <!-- Code View -->
+                <div class="code-view" id="codeView">
+                    <div class="code-toolbar">
+                        <div class="file-path">
+                            <span id="fileName">file.cpp</span>
+                        </div>
+                        <div class="toolbar-spacer"></div>
+                        <button class="toolbar-btn" id="copyBtn">📋 Copy</button>
+                        <a href="#" class="toolbar-btn" id="ghBtn" target="_blank">↗ View on GitHub</a>
                     </div>
-                    <div class="nav-buttons">
-                        <button class="nav-btn" id="prevBtn" title="Previous file">
-                            <span>←</span> Prev
-                        </button>
-                        <button class="nav-btn" id="nextBtn" title="Next file">
-                            Next <span>→</span>
-                        </button>
-                    </div>
-                    <div class="code-actions">
-                        <button class="code-btn" id="copyBtn">
-                            <span>📋</span>
-                            <span>Copy</span>
-                        </button>
-                        <a href="#" class="code-btn" id="githubLink" target="_blank">
-                            <span>🔗</span>
-                            <span>GitHub</span>
-                        </a>
+                    <div class="code-wrapper">
+                        <pre class="line-numbers"><code class="language-cpp" id="code"></code></pre>
                     </div>
                 </div>
-                <div class="code-info">
-                    <div class="code-info-item">
-                        <span class="code-info-icon">📄</span>
-                        <span id="lineCount">0 lines</span>
-                    </div>
-                    <div class="code-info-item">
-                        <span class="code-info-icon">💾</span>
-                        <span id="fileSize">0 KB</span>
-                    </div>
-                </div>
-                <div class="code-container">
-                    <pre class="line-numbers"><code class="language-cpp" id="codeContent"></code></pre>
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="https://github.com/raunakra/DSAProject">DSAProject</a> · 110+ Interview Problems · C++17
+        </footer>
     </div>
     
     <!-- Prism.js -->
@@ -861,501 +501,148 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
     
     <script>
-        // Topic and file data structure
-        const topicsData = [
-            {
-                id: 1,
-                name: "Arrays & Strings",
-                icon: "📊",
-                folder: "1. Arrays_Strings",
-                files: [
-                    { name: "Two_Pointers.cpp", label: "Two Pointers" },
-                    { name: "Sliding_Window.cpp", label: "Sliding Window" },
-                    { name: "Prefix_Sum.cpp", label: "Prefix Sum" },
-                    { name: "String_Manipulation.cpp", label: "String Manipulation" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 2,
-                name: "Linked Lists",
-                icon: "🔗",
-                folder: "2. Linked_Lists",
-                files: [
-                    { name: "Reversal.cpp", label: "Reversal" },
-                    { name: "Fast_Slow_Pointers.cpp", label: "Fast & Slow Pointers" },
-                    { name: "Dummy_Node.cpp", label: "Dummy Node" },
-                    { name: "Cycle_Detection.cpp", label: "Cycle Detection" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 3,
-                name: "Stacks & Queues",
-                icon: "📚",
-                folder: "3. Stacks_Queues",
-                files: [
-                    { name: "Monotonic_Stack.cpp", label: "Monotonic Stack" },
-                    { name: "Expression_Evaluation.cpp", label: "Expression Evaluation" },
-                    { name: "Queue_BFS.cpp", label: "Queue for BFS" },
-                    { name: "Deque_Sliding_Window.cpp", label: "Deque Sliding Window" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 4,
-                name: "Trees",
-                icon: "🌳",
-                folder: "4. Trees",
-                files: [
-                    { name: "Traversals.cpp", label: "Traversals" },
-                    { name: "Recursion.cpp", label: "Recursion on Trees" },
-                    { name: "Properties.cpp", label: "Tree Properties" },
-                    { name: "LCA.cpp", label: "LCA" },
-                    { name: "Diameter.cpp", label: "Diameter" },
-                    { name: "Construction.cpp", label: "Tree Construction" },
-                    { name: "Morris_Inorder.cpp", label: "Morris Inorder" },
-                    { name: "Boundary_Traversal.cpp", label: "Boundary Traversal" },
-                    { name: "Left_Right_View.cpp", label: "Left & Right View" },
-                    { name: "Top_View.cpp", label: "Top View" },
-                    { name: "Bottom_View.cpp", label: "Bottom View" },
-                    { name: "Vertical_Order_Traversal.cpp", label: "Vertical Order Traversal" },
-                    { name: "Maximum_Width.cpp", label: "Maximum Width" },
-                    { name: "Children_Sum_Property.cpp", label: "Children Sum Property" },
-                    { name: "Time_To_Burn_Tree.cpp", label: "Time to Burn Tree" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 5,
-                name: "Binary Search Trees",
-                icon: "🔍",
-                folder: "5. Binary_Search_Trees",
-                files: [
-                    { name: "Validation.cpp", label: "BST Validation" },
-                    { name: "Operations.cpp", label: "BST Operations" },
-                    { name: "Successor_Predecessor.cpp", label: "Successor/Predecessor" },
-                    { name: "BST_to_Sorted_Array.cpp", label: "BST to Sorted Array" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 6,
-                name: "Heaps & Priority Queues",
-                icon: "⬆️",
-                folder: "6. Heaps_Priority_Queue",
-                files: [
-                    { name: "Top_K.cpp", label: "Top K Problems" },
-                    { name: "Merge_K_Sorted.cpp", label: "Merge K Sorted" },
-                    { name: "Meeting_Rooms.cpp", label: "Meeting Rooms" },
-                    { name: "Running_Median.cpp", label: "Running Median" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 7,
-                name: "Graphs",
-                icon: "🕸️",
-                folder: "7. Graphs",
-                files: [
-                    { name: "BFS_DFS.cpp", label: "BFS & DFS" },
-                    { name: "Grid_BFS.cpp", label: "Grid BFS" },
-                    { name: "Grid_DFS.cpp", label: "Grid DFS" },
-                    { name: "Cycle_Detection.cpp", label: "Cycle Detection" },
-                    { name: "Topological_Sort.cpp", label: "Topological Sort" },
-                    { name: "Kosaraju_SCC.cpp", label: "Kosaraju SCC" },
-                    { name: "Word_Ladder.cpp", label: "Word Ladder" },
-                    { name: "Dijkstra.cpp", label: "Dijkstra" },
-                    { name: "Union_Find.cpp", label: "Union Find" },
-                    { name: "MST_Kruskal.cpp", label: "MST (Kruskal)" },
-                    { name: "Rotten_Oranges.cpp", label: "Rotten Oranges" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 8,
-                name: "Dynamic Programming",
-                icon: "🧩",
-                folder: "8. Dynamic_Programming",
-                files: [
-                    { name: "1D_DP.cpp", label: "1D DP" },
-                    { name: "2D_DP.cpp", label: "2D DP" },
-                    { name: "Knapsack.cpp", label: "Knapsack" },
-                    { name: "LCS_LIS.cpp", label: "LCS & LIS" },
-                    { name: "String_DP.cpp", label: "String DP" },
-                    { name: "DP_On_Trees.cpp", label: "DP on Trees" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 9,
-                name: "Binary Search",
-                icon: "🎯",
-                folder: "9. Binary_Search",
-                files: [
-                    { name: "Standard_BS.cpp", label: "Standard Binary Search" },
-                    { name: "Rotated_Array.cpp", label: "Rotated Array" },
-                    { name: "BS_on_Answer.cpp", label: "BS on Answer" },
-                    { name: "Peak_Element.cpp", label: "Peak Element" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 10,
-                name: "Backtracking",
-                icon: "🔄",
-                folder: "10. Backtracking",
-                files: [
-                    { name: "Subsets_Permutations.cpp", label: "Subsets & Permutations" },
-                    { name: "N_Queens.cpp", label: "N-Queens" },
-                    { name: "Palindrome_Partitioning.cpp", label: "Palindrome Partitioning" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            },
-            {
-                id: 11,
-                name: "Bit Manipulation",
-                icon: "💻",
-                folder: "11. Bit_Manipulation",
-                files: [
-                    { name: "Basic_Operations.cpp", label: "Basic Operations" },
-                    { name: "Tricks.cpp", label: "Common Tricks" },
-                    { name: "Single_Number.cpp", label: "Single Number" },
-                    { name: "Amazon_Salesforce_Questions.cpp", label: "Amazon/Salesforce Questions", tag: "amazon" }
-                ]
-            }
+        const topics = [
+            { id: 1, name: "Arrays & Strings", icon: "📊", folder: "1. Arrays_Strings", files: [
+                "Two_Pointers.cpp", "Sliding_Window.cpp", "Prefix_Sum.cpp", "String_Manipulation.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 2, name: "Linked Lists", icon: "🔗", folder: "2. Linked_Lists", files: [
+                "Reversal.cpp", "Fast_Slow_Pointers.cpp", "Dummy_Node.cpp", "Cycle_Detection.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 3, name: "Stacks & Queues", icon: "📚", folder: "3. Stacks_Queues", files: [
+                "Monotonic_Stack.cpp", "Expression_Evaluation.cpp", "Queue_BFS.cpp", "Deque_Sliding_Window.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 4, name: "Trees", icon: "🌳", folder: "4. Trees", files: [
+                "Traversals.cpp", "Recursion.cpp", "Properties.cpp", "LCA.cpp", "Diameter.cpp", "Construction.cpp", "Morris_Inorder.cpp", "Boundary_Traversal.cpp", "Left_Right_View.cpp", "Top_View.cpp", "Bottom_View.cpp", "Vertical_Order_Traversal.cpp", "Maximum_Width.cpp", "Children_Sum_Property.cpp", "Time_To_Burn_Tree.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 5, name: "Binary Search Trees", icon: "🔍", folder: "5. Binary_Search_Trees", files: [
+                "Validation.cpp", "Operations.cpp", "Successor_Predecessor.cpp", "BST_to_Sorted_Array.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 6, name: "Heaps & Priority Queues", icon: "⬆️", folder: "6. Heaps_Priority_Queue", files: [
+                "Top_K.cpp", "Merge_K_Sorted.cpp", "Meeting_Rooms.cpp", "Running_Median.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 7, name: "Graphs", icon: "🕸️", folder: "7. Graphs", files: [
+                "BFS_DFS.cpp", "Grid_BFS.cpp", "Grid_DFS.cpp", "Cycle_Detection.cpp", "Topological_Sort.cpp", "Kosaraju_SCC.cpp", "Word_Ladder.cpp", "Dijkstra.cpp", "Union_Find.cpp", "MST_Kruskal.cpp", "Rotten_Oranges.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 8, name: "Dynamic Programming", icon: "🧩", folder: "8. Dynamic_Programming", files: [
+                "1D_DP.cpp", "2D_DP.cpp", "Knapsack.cpp", "LCS_LIS.cpp", "String_DP.cpp", "DP_On_Trees.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 9, name: "Binary Search", icon: "🎯", folder: "9. Binary_Search", files: [
+                "Standard_BS.cpp", "Rotated_Array.cpp", "BS_on_Answer.cpp", "Peak_Element.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 10, name: "Backtracking", icon: "🔄", folder: "10. Backtracking", files: [
+                "Subsets_Permutations.cpp", "N_Queens.cpp", "Palindrome_Partitioning.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]},
+            { id: 11, name: "Bit Manipulation", icon: "💻", folder: "11. Bit_Manipulation", files: [
+                "Basic_Operations.cpp", "Tricks.cpp", "Single_Number.cpp", "Amazon_Salesforce_Questions.cpp"
+            ]}
         ];
         
-        // GitHub raw content base URL
-        const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/raunakra/DSAProject/main";
-        const GITHUB_REPO_BASE = "https://github.com/raunakra/DSAProject/blob/main";
+        const GITHUB_RAW = "https://raw.githubusercontent.com/raunakra/DSAProject/main";
+        const GITHUB_BLOB = "https://github.com/raunakra/DSAProject/blob/main";
         
-        // DOM Elements
-        const sidebarContent = document.getElementById('sidebarContent');
-        const welcomeScreen = document.getElementById('welcomeScreen');
-        const codeViewer = document.getElementById('codeViewer');
-        const loadingContainer = document.getElementById('loadingContainer');
-        const errorContainer = document.getElementById('errorContainer');
-        const codeContent = document.getElementById('codeContent');
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('searchResults');
+        const nav = document.getElementById('nav');
+        const emptyState = document.getElementById('emptyState');
+        const loading = document.getElementById('loading');
+        const codeView = document.getElementById('codeView');
+        const code = document.getElementById('code');
+        const fileName = document.getElementById('fileName');
         const copyBtn = document.getElementById('copyBtn');
-        const retryBtn = document.getElementById('retryBtn');
-        const menuToggle = document.getElementById('menuToggle');
+        const ghBtn = document.getElementById('ghBtn');
+        const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+        const overlay = document.getElementById('overlay');
         
-        let currentFile = null;
         let currentCode = '';
-        let currentFileIndex = -1;
-        let flatFileList = [];
+        let activeBtn = null;
         
-        // Build flat file list for navigation
-        function buildFlatFileList() {
-            flatFileList = [];
-            topicsData.forEach(topic => {
-                topic.files.forEach(file => {
-                    flatFileList.push({
-                        folder: topic.folder,
-                        fileName: file.name,
-                        topicName: topic.name,
-                        label: file.label
-                    });
-                });
-            });
-        }
-        
-        // Initialize sidebar
-        function initSidebar() {
-            sidebarContent.innerHTML = topicsData.map(topic => `
-                <div class="topic-group" data-topic-id="${topic.id}">
-                    <div class="topic-header" onclick="toggleTopic(${topic.id})">
-                        <span class="topic-icon">${topic.icon}</span>
-                        <span class="topic-name">${topic.name}</span>
+        // Build navigation
+        function buildNav() {
+            nav.innerHTML = topics.map(t => `
+                <div class="topic" data-id="${t.id}">
+                    <button class="topic-btn" onclick="toggleTopic(${t.id})">
+                        <span class="topic-icon">${t.icon}</span>
+                        <span class="topic-name">${t.name}</span>
                         <span class="topic-chevron">▶</span>
-                    </div>
-                    <div class="topic-files" id="topic-files-${topic.id}">
-                        ${topic.files.map(file => `
-                            <div class="file-item" data-folder="${topic.folder}" data-file="${file.name}" data-topic="${topic.name}" onclick="loadFile('${topic.folder}', '${file.name}', '${topic.name}')">
-                                <span class="file-icon">📄</span>
-                                <span>${file.label}</span>
-                                ${file.tag ? `<span class="file-tag ${file.tag}">★</span>` : ''}
-                            </div>
+                    </button>
+                    <div class="topic-files">
+                        ${t.files.map(f => `
+                            <button class="file-btn" data-folder="${t.folder}" data-file="${f}" onclick="loadFile('${t.folder}', '${f}')">${f.replace('.cpp', '').replace(/_/g, ' ')}</button>
                         `).join('')}
                     </div>
                 </div>
             `).join('');
         }
         
-        // Toggle topic expansion
-        function toggleTopic(topicId) {
-            const topicGroup = document.querySelector(`[data-topic-id="${topicId}"]`);
-            const header = topicGroup.querySelector('.topic-header');
-            const files = document.getElementById(`topic-files-${topicId}`);
-            
-            header.classList.toggle('expanded');
-            files.classList.toggle('visible');
+        // Toggle topic
+        function toggleTopic(id) {
+            document.querySelector(`[data-id="${id}"]`).classList.toggle('open');
         }
         
-        // Show view state
+        // Show state
         function showState(state) {
-            welcomeScreen.style.display = 'none';
-            codeViewer.classList.remove('visible');
-            loadingContainer.classList.remove('visible');
-            errorContainer.classList.remove('visible');
-            
-            switch (state) {
-                case 'welcome':
-                    welcomeScreen.style.display = 'flex';
-                    break;
-                case 'loading':
-                    loadingContainer.classList.add('visible');
-                    break;
-                case 'error':
-                    errorContainer.classList.add('visible');
-                    break;
-                case 'code':
-                    codeViewer.classList.add('visible');
-                    break;
-            }
+            emptyState.style.display = state === 'empty' ? 'flex' : 'none';
+            loading.classList.toggle('visible', state === 'loading');
+            codeView.classList.toggle('visible', state === 'code');
         }
         
-        // Show welcome screen
-        function showWelcome() {
-            currentFile = null;
-            currentFileIndex = -1;
-            showState('welcome');
-            document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
-            updateNavButtons();
-        }
-        
-        // Update navigation buttons
-        function updateNavButtons() {
-            prevBtn.disabled = currentFileIndex <= 0;
-            nextBtn.disabled = currentFileIndex >= flatFileList.length - 1 || currentFileIndex === -1;
-        }
-        
-        // Navigate to previous/next file
-        function navigateFile(direction) {
-            const newIndex = currentFileIndex + direction;
-            if (newIndex >= 0 && newIndex < flatFileList.length) {
-                const file = flatFileList[newIndex];
-                loadFile(file.folder, file.fileName, file.topicName);
-            }
-        }
-        
-        // Load file from GitHub
-        async function loadFile(folder, fileName, topicName) {
-            currentFile = { folder, fileName, topicName };
+        // Load file
+        async function loadFile(folder, file) {
+            // Update active state
+            if (activeBtn) activeBtn.classList.remove('active');
+            activeBtn = document.querySelector(`[data-folder="${folder}"][data-file="${file}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
             
-            // Find current index in flat list
-            currentFileIndex = flatFileList.findIndex(f => 
-                f.folder === folder && f.fileName === fileName
-            );
-            
-            // Update active states
-            document.querySelectorAll('.file-item').forEach(item => item.classList.remove('active'));
-            const activeItem = document.querySelector(`[data-folder="${folder}"][data-file="${fileName}"]`);
-            if (activeItem) activeItem.classList.add('active');
-            
-            // Expand the topic that contains this file
-            const topic = topicsData.find(t => t.folder === folder);
-            if (topic) {
-                const header = document.querySelector(`[data-topic-id="${topic.id}"] .topic-header`);
-                const files = document.getElementById(`topic-files-${topic.id}`);
-                if (!header.classList.contains('expanded')) {
-                    header.classList.add('expanded');
-                    files.classList.add('visible');
-                }
-            }
-            
-            // Close mobile sidebar
+            // Close mobile menu
             sidebar.classList.remove('open');
-            sidebarOverlay.classList.remove('visible');
+            overlay.classList.remove('visible');
             
             showState('loading');
-            updateNavButtons();
             
             try {
-                const encodedFolder = encodeURIComponent(folder);
-                const url = `${GITHUB_RAW_BASE}/${encodedFolder}/${fileName}`;
-                const response = await fetch(url);
+                const url = `${GITHUB_RAW}/${encodeURIComponent(folder)}/${file}`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error();
                 
-                if (!response.ok) throw new Error('Failed to fetch');
+                currentCode = await res.text();
                 
-                const code = await response.text();
-                currentCode = code;
+                fileName.textContent = `${folder.split('. ')[1]}/${file}`;
+                ghBtn.href = `${GITHUB_BLOB}/${encodeURIComponent(folder)}/${file}`;
                 
-                // Update UI
-                document.getElementById('breadcrumbTopic').textContent = topicName;
-                document.getElementById('breadcrumbFile').textContent = fileName;
-                document.getElementById('githubLink').href = `${GITHUB_REPO_BASE}/${encodedFolder}/${fileName}`;
-                
-                // Update code info
-                const lines = code.split('\n').length;
-                const size = (new Blob([code]).size / 1024).toFixed(1);
-                document.getElementById('lineCount').textContent = `${lines} lines`;
-                document.getElementById('fileSize').textContent = `${size} KB`;
-                
-                // Display code with syntax highlighting
-                codeContent.textContent = code;
-                Prism.highlightElement(codeContent);
+                code.textContent = currentCode;
+                Prism.highlightElement(code);
                 
                 showState('code');
-                updateNavButtons();
-                
-                // Update URL hash for bookmarking
-                window.location.hash = `${encodeURIComponent(folder)}/${encodeURIComponent(fileName)}`;
-                
-            } catch (error) {
-                console.error('Error loading file:', error);
-                showState('error');
+            } catch {
+                showState('empty');
             }
         }
         
-        // Copy code to clipboard
-        copyBtn.addEventListener('click', async () => {
+        // Copy code
+        copyBtn.onclick = async () => {
             if (!currentCode) return;
-            
-            try {
-                await navigator.clipboard.writeText(currentCode);
-                copyBtn.classList.add('copied');
-                copyBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
-                
-                setTimeout(() => {
-                    copyBtn.classList.remove('copied');
-                    copyBtn.innerHTML = '<span>📋</span><span>Copy</span>';
-                }, 2000);
-            } catch (error) {
-                console.error('Failed to copy:', error);
-            }
-        });
+            await navigator.clipboard.writeText(currentCode);
+            copyBtn.textContent = '✓ Copied';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.textContent = '📋 Copy';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        };
         
-        // Retry loading
-        retryBtn.addEventListener('click', () => {
-            if (currentFile) {
-                loadFile(currentFile.folder, currentFile.fileName, currentFile.topicName);
-            }
-        });
-        
-        // Navigation button handlers
-        prevBtn.addEventListener('click', () => navigateFile(-1));
-        nextBtn.addEventListener('click', () => navigateFile(1));
-        
-        // Search functionality
-        function buildSearchIndex() {
-            const index = [];
-            topicsData.forEach(topic => {
-                topic.files.forEach(file => {
-                    index.push({
-                        topic: topic.name,
-                        folder: topic.folder,
-                        fileName: file.name,
-                        label: file.label,
-                        searchText: `${topic.name} ${file.label} ${file.name}`.toLowerCase()
-                    });
-                });
-            });
-            return index;
-        }
-        
-        const searchIndex = buildSearchIndex();
-        
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            
-            if (!query) {
-                searchResults.classList.remove('visible');
-                return;
-            }
-            
-            const matches = searchIndex.filter(item => 
-                item.searchText.includes(query)
-            ).slice(0, 10);
-            
-            if (matches.length === 0) {
-                searchResults.innerHTML = '<div class="search-result-item"><span style="color: var(--text-muted);">No results found</span></div>';
-            } else {
-                searchResults.innerHTML = matches.map(item => `
-                    <div class="search-result-item" onclick="loadFile('${item.folder}', '${item.fileName}', '${item.topic}'); searchResults.classList.remove('visible'); searchInput.value = '';">
-                        <span class="search-result-topic">${item.topic}</span>
-                        <span class="search-result-file">${item.label}</span>
-                    </div>
-                `).join('');
-            }
-            
-            searchResults.classList.add('visible');
-        });
-        
-        // Close search results on click outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.search-container')) {
-                searchResults.classList.remove('visible');
-            }
-        });
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Ctrl+K to focus search
-            if (e.ctrlKey && e.key === 'k') {
-                e.preventDefault();
-                searchInput.focus();
-            }
-            
-            // Escape to close search
-            if (e.key === 'Escape') {
-                searchResults.classList.remove('visible');
-                searchInput.blur();
-            }
-            
-            // Arrow keys for navigation when not in search
-            if (!searchInput.matches(':focus')) {
-                if (e.key === 'ArrowLeft' && !prevBtn.disabled) {
-                    navigateFile(-1);
-                } else if (e.key === 'ArrowRight' && !nextBtn.disabled) {
-                    navigateFile(1);
-                }
-            }
-        });
-        
-        // Mobile menu toggle
-        menuToggle.addEventListener('click', () => {
+        // Mobile menu
+        menuBtn.onclick = () => {
             sidebar.classList.toggle('open');
-            sidebarOverlay.classList.toggle('visible');
-        });
+            overlay.classList.toggle('visible');
+        };
         
-        sidebarOverlay.addEventListener('click', () => {
+        overlay.onclick = () => {
             sidebar.classList.remove('open');
-            sidebarOverlay.classList.remove('visible');
-        });
+            overlay.classList.remove('visible');
+        };
         
-        // Handle URL hash for deep linking
-        function handleHashChange() {
-            const hash = decodeURIComponent(window.location.hash.slice(1));
-            if (hash) {
-                const [folder, fileName] = hash.split('/');
-                const topic = topicsData.find(t => t.folder === folder);
-                if (topic && fileName) {
-                    loadFile(folder, fileName, topic.name);
-                    return;
-                }
-            }
-            showState('welcome');
-        }
-        
-        window.addEventListener('hashchange', handleHashChange);
-        
-        // Initialize
-        buildFlatFileList();
-        initSidebar();
-        handleHashChange();
-        
-        // Auto-expand first topic for better UX
-        if (!window.location.hash) {
-            toggleTopic(1);
-        }
+        // Init
+        buildNav();
+        showState('empty');
     </script>
 </body>
 </html>
